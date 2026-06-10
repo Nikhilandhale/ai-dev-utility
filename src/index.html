@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fintech Data Lineage</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f9; }
+        .card { background: white; border: 1px solid #ccc; padding: 20px; max-width: 400px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        input { padding: 8px; width: 80%; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #0056b3; color: white; padding: 10px 15px; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        button:hover { background-color: #004494; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Transaction Lineage Tracer</h2>
+        <p>Enter Transaction ID to map regulatory data origin.</p>
+        
+        <input type="text" id="tx-id" placeholder="e.g., TXN-8992-AUDIT" />
+        <br>
+        <button id="trace-btn">Trace Lineage</button>
+        
+        <p id="status-message" style="margin-top: 15px; font-weight: bold;"></p>
+    </div>
+
+    <script>
+        // Logic: Check if ID is entered, display success or error.
+        document.getElementById('trace-btn').onclick = function() {
+            const txId = document.getElementById('tx-id').value;
+            const statusNode = document.getElementById('status-message');
+            
+            if(txId) {
+                statusNode.innerText = `✅ Lineage mapped successfully for ${txId}.`;
+                statusNode.style.color = "green";
+            } else {
+                statusNode.innerText = "❌ Error: Missing Transaction ID.";
+                statusNode.style.color = "red";
+            }
+        };
+    </script>
+</body>
+</html>
